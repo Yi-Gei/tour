@@ -1,6 +1,6 @@
 from django.db import models
 from tour import settings
-
+from visitor.models import Visitor
 class City(models.Model):
     name=models.CharField(max_length=20)
     desc=models.TextField(null = True,blank=True)
@@ -8,6 +8,7 @@ class City(models.Model):
 
 class Viewspot(models.Model):
     city=models.ForeignKey(City)
+    name=models.CharField(max_length=20)
     address=models.CharField(max_length=20)
     desc=models.TextField(null = True,blank=True)
     
@@ -16,26 +17,28 @@ class Hotel(models.Model):
     address=models.CharField(max_length=20)
     desc=models.TextField(null = True,blank=True)
     city=models.ForeignKey(City)
-    viewspot=models.ForeignKey(Viewspot)
+    
     
 class Restau(models.Model):
     name=models.CharField(max_length=20)
     address=models.CharField(max_length=20)
     desc=models.TextField(null = True,blank=True)
     city=models.ForeignKey(City)
-    viewspot=models.ForeignKey(Viewspot)
+    
+    
+    
+class Linepoint(models.Model):
+    day=models.IntegerField(default=1)
+    position=models.ForeignKey(Viewspot)
     
 class Line(models.Model):
     name=models.CharField(max_length=20)
     desc=models.TextField(null = True,blank=True)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL)
+    points=models.ManyToManyField(Linepoint)
     
-class Linepoint(models.Model):
-    time=models.DateTimeField()
-    viewspot=models.ForeignKey(Viewspot)
-    hotel=models.ForeignKey(Hotel)
-    restau=models.ForeignKey(Restau)
-    line=models.ForeignKey(Line)
+
+    
+    
        
 class Comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
