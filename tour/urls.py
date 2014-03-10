@@ -6,7 +6,7 @@ admin.autodiscover()
 from tour.settings import MEDIA_ROOT
 urlpatterns = patterns('',
     # Examples:
-    #url(r'^$', 'tour.views.home', name='home'),
+    url(r'^$', 'tour.views.home', name='home'),
     # url(r'^tour/', include('tour.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

@@ -1,6 +1,6 @@
 #!encoding=utf-8
 from django.contrib import admin
-from onroad.models import City,Viewspot,Hotel,Restau,Linepoint,Line,Comment,Img,Status
+from line.models import City,Viewspot,Hotel,Restau,Linepoint,Line,Comment,Img,Status
 
 admin.site.register(City)
 admin.site.register(Viewspot)
