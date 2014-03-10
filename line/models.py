@@ -4,6 +4,8 @@ from visitor.models import Visitor
 class City(models.Model):
     name=models.CharField(max_length=20)
     desc=models.TextField(null = True,blank=True)
+    def __unicode__(self):
+        return self.name
     
 
 class Viewspot(models.Model):
@@ -11,12 +13,16 @@ class Viewspot(models.Model):
     name=models.CharField(max_length=20)
     address=models.CharField(max_length=20)
     desc=models.TextField(null = True,blank=True)
+    def __unicode__(self):
+        return self.name
     
 class Hotel(models.Model):
     name=models.CharField(max_length=20)
     address=models.CharField(max_length=20)
     desc=models.TextField(null = True,blank=True)
     city=models.ForeignKey(City)
+    def __unicode__(self):
+        return self.name
     
     
 class Restau(models.Model):
@@ -24,7 +30,8 @@ class Restau(models.Model):
     address=models.CharField(max_length=20)
     desc=models.TextField(null = True,blank=True)
     city=models.ForeignKey(City)
-    
+    def __unicode__(self):
+        return self.name
     
     
 class Linepoint(models.Model):
@@ -35,7 +42,8 @@ class Line(models.Model):
     name=models.CharField(max_length=20)
     desc=models.TextField(null = True,blank=True)
     points=models.ManyToManyField(Linepoint)
-    
+    def __unicode__(self):
+        return self.name
 
     
     
